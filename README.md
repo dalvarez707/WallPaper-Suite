@@ -1,4 +1,6 @@
 # Wallpaper Suite
+![Uploading image.png…]()
+
 Wallpaper Suite es una solución integral diseñada para la gestión, curación y rotación inteligente de fondos de pantalla. El ecosistema se divide en dos aplicaciones especializadas que trabajan en conjunto para garantizar que tu escritorio siempre luzca optimizado y personalizado:
 
 1. Wallpaper Master (El Arquitecto)

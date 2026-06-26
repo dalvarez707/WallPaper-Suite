@@ -1,0 +1,13 @@
+CONTRATO DE LICENCIA DE SOFTWARE "TAL CUAL" (FREEWARE)
+
+1. PROPIEDAD DEL SOFTWARE Y CÓDIGO FUENTE
+Este software y su documentación son propiedad exclusiva del Autor. El Autor conserva todos los derechos de propiedad intelectual, derechos de autor y el código fuente del programa. Esta licencia NO otorga al usuario ningún derecho sobre el código fuente, ni permite la ingeniería inversa, descompilación o modificación del archivo ejecutable.
+
+2. CONCESIÓN DE LICENCIA (GRATUITA)
+Se otorga al usuario una licencia no exclusiva, intransferible y gratuita para descargar, instalar y utilizar este software únicamente para uso personal y privado. Queda estrictamente prohibida la venta, renta o explotación comercial de este software por parte de terceros.
+
+3. EXCLUSIÓN DE GARANTÍAS Y SOPORTE (AS IS)
+EL SOFTWARE SE PROPORCIONA "TAL CUAL" (AS IS), SIN GARANTÍA DE NINGÚN TIPO, YA SEA EXPRESA O IMPLÍCITA. El Autor no garantiza que el software cumpla con los requisitos del usuario o que su funcionamiento sea ininterrumpido o libre de errores. El Autor NO tiene la obligación de proporcionar actualizaciones, mejoras, mantenimiento ni soporte técnico de ningún tipo.
+
+4. LIMITACIÓN DE RESPONSABILIDAD
+EN NINGÚN CASO EL AUTOR SERÁ RESPONSABLE ANTE EL USUARIO O TERCEROS POR CUALQUIER DAÑO DIRECTO, INDIRECTO, INCIDENTAL, ESPECIAL O CONSECUENTE (INCLUYENDO, ENTRE OTROS, DAÑOS POR PÉRDIDA DE DATOS, FALLAS EN EL EQUIPO O INTERRUPCIÓN DEL NEGOCIO) QUE SURJA DEL USO O DE LA INCAPACIDAD DE USAR ESTE SOFTWARE, INCLUSO SI SE HA ADVERTIDO DE LA POSIBILIDAD DE TALES DAÑOS. El uso de este software es bajo la total responsabilidad y riesgo del usuario.

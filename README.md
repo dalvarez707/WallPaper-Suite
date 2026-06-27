@@ -34,6 +34,7 @@ Para dominar el flujo de trabajo en "piloto automático" y conocer todos los ata
 Diseñado bajo una arquitectura de optimización pasiva y procesamiento dinámico en caché, Wallpaper Suite es sumamente ligero y no requiere hardware dedicado para gráficos.
 
 * **Sistema Operativo:** Windows 10 / 11 (64-bits).
+* **Dependencias:** **Ninguna (Zero Dependencies).** El software se distribuye compilado en modo *Self-Contained Single-File*, lo que significa que incluye su propio entorno de ejecución y no requiere que instales .NET ni ningún otro framework externo.
 * **Memoria RAM:** 16 GB recomendados para la gestión fluida de catálogos masivos de imágenes de alta resolución.
 * **Tarjeta Gráfica:** **No requerida (Integrated Graphics Friendly).** Probado y optimizado en hardware base (APU/Gráficos integrados en tarjetas madre como la Gigabyte B450M) demostrando un impacto prácticamente nulo en el rendimiento general del equipo.
 

@@ -311,3 +311,38 @@ Para ajustar la composición perfecta, puedes utilizar dos métodos indistintos:
 > Las flechas de dirección del teclado **no moverán el marco de recorte si el cursor está parpadeando dentro de un cuadro de texto** (como el filtro de búsqueda o el editor de etiquetas), ya que en ese momento el sistema prioriza la escritura.
 > 
 > *   **Solución Rápida:** Presiona la tecla **`Tab`** para alternar el foco de la interfaz. Al pulsarla, saltarás instantáneamente del área de edición de texto de vuelta al área de trabajo del Canvas, reactivando las flechas para el control del *Crop*.
+
+### 4.8.2 Editor de Etiquetas Personalizadas (Tags)
+
+Ubicado inmediatamente debajo del Canvas de previsualización, se encuentra el campo de edición de etiquetas. Este cuadro de texto te permite indexar palabras clave directamente en los metadatos de la imagen activa dentro del archivo `datos_carpeta.json`.
+
+<div align="center">
+  <img width="415" height="72" alt="image" src="https://github.com/user-attachments/assets/bd226856-212d-46c0-8890-df101cefcae3" />
+</div>
+
+#### 🏷️ Reglas de Sintaxis y Comportamiento del Editor
+El sistema está diseñado para ser un lienzo limpio y directo, admitiendo dos estructuras principales separadas estrictamente por **comas (`,`)**:
+
+* **Tags Simples:** Palabras clave de un solo término. *Ejemplo: `ciudad, paisaje, bosque`.*
+* **Tags Compuestos:** Frases o conceptos de múltiples palabras con espacios intermedios. *Ejemplo: `ciudad de mexico, bosque de chapultepec`.*
+
+> ⚠️ **Comportamiento Literal del Campo (Sin Asistencias):**
+> Es muy importante tener en cuenta que el editor **no cuenta con autollenado o texto predictivo, ni incluye corrector ortográfico**. El Master guardará de forma exacta y literal lo que escribas; si introduces un tag con una falta de ortografía o un dedazo, así se almacenará en los metadatos de la imagen y afectará a tus futuras búsquedas. ¡Revisa bien antes de confirmar!
+
+> 💡 **Consejo de Indexación:**
+> El motor del Master es capaz de interpretar de forma independiente los tags simples de los compuestos. Para una base de datos más robusta, se recomienda "anidar" conceptos de lo general a lo particular en la misma imagen. Por ejemplo, puedes escribir: `ciudad, ciudad de mexico` o `bosque, bosque de chapultepec`. Esto te permitirá encontrar la imagen más adelante tanto si buscas el término genérico como la ubicación exacta.
+
+> 🚫 **Restricción de Caracteres:**
+> Aunque el campo técnicamente acepta caracteres especiales, acentos o diéresis (`´`, `¨`, etc.), **se desaconseja por completo su uso** para garantizar la máxima compatibilidad, consistencia y velocidad al momento de ejecutar tus búsquedas avanzadas.
+
+---
+
+#### 💾 Guardado Automático y Gestión del Foco
+
+El flujo de captura está optimizado para que no tengas que soltar el teclado en ningún momento:
+
+* **Persistencia:** Las etiquetas se guardarán de forma automática en el JSON en el instante en que presiones la tecla **`Enter`** o cuando salgas del cuadro de texto presionando la tecla **`Tab`**.
+* **Comportamiento de las Flechas:** Mientras el cursor esté parpadeando dentro de este campo, las flechas de dirección (`←` `→`) servirán exclusivamente para navegar entre las letras del texto que estás escribiendo. 
+
+> ⌨️ **Recordatorio de Navegación:**
+> Recuerda que mientras estés editando tags, el control del *Crop* en el Canvas superior quedará temporalmente suspendido. Para volver a mover el marco de recorte con las flechas, simplemente presiona **`Tab`** para trasladar el foco de la interfaz de vuelta al área de trabajo.

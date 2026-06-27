@@ -24,8 +24,9 @@ Es una aplicación ligera y eficiente que actúa como el motor de visualización
 ## 📚 Manuales de Usuario Completos
 
 Para dominar el flujo de trabajo en "piloto automático" y conocer todos los atajos de teclado y algoritmos del ecosistema, consulta las guías oficiales:
-* [Manual de Usuario - Wallpaper Master](./MANUAL_MASTER.md) *(Añade aquí la ruta correcta de tu archivo)*
-* [Manual de Usuario - Wallpaper Companion](./MANUAL_COMPANION.md) *(Añade aquí la ruta correcta de tu archivo)*
+* [Manual de Usuario - Wallpaper Master](https://github.com/dalvarez707/WallPaper-Suite/blob/main/Master_Manual.md)
+* [Manual de Usuario - Wallpaper Companion](https://github.com/dalvarez707/WallPaper-Suite/blob/main/Companion_Manual.md)
+
 
 ---
 

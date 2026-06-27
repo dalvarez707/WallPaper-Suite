@@ -462,8 +462,8 @@ Cuando se ejecuta la orden de renombrado, el sistema realiza un análisis sintá
 
 El renombrado puede aplicarse en dos modalidades de lote utilizando comandos rápidos de teclado:
 
-* ⌨️ **Renombrado Individual (`Ctrl + T`):** Procesa única y exclusivamente la imagen activa que se encuentra cargada en el Canvas de trabajo.
-* ⌨️ **Renombrado Masivo (`Ctrl + Shift + T`):** Ejecuta el algoritmo en lote sobre **todas las imágenes que estén visibles actualmente en la tira de miniaturas** (respetando los switches de calidad o filtros de tags activos en ese microsegundo).
+* ⌨️ **Renombrado Individual (`Ctrl + N`):** Procesa única y exclusivamente la imagen activa que se encuentra cargada en el Canvas de trabajo.
+* ⌨️ **Renombrado Masivo (`Ctrl + Shift + N`):** Ejecuta el algoritmo en lote sobre **todas las imágenes que estén visibles actualmente en la tira de miniaturas** (respetando los switches de calidad o filtros de tags activos en ese microsegundo).
 
 #### Opciones de Salida del Archivo:
 
@@ -483,3 +483,33 @@ Si el Master detecta que el nombre final generado ya existe físicamente en el d
 * *Archivo original o base:* `paisaje_bosque_bosque-de-chapultepec_invierno.jpg`
 * *Segundo archivo idéntico:* `paisaje_bosque_bosque-de-chapultepec_invierno-wpm001.jpg`
 * *Tercer archivo idéntico:* `paisaje_bosque_bosque-de-chapultepec_invierno-wpm002.jpg`
+## 5.3 Extracción Inversa de Etiquetas: De Nombre a Tags (*Name to Tag*)
+
+El Master no solo te permite renombrar archivos en función de sus etiquetas; también cuenta con un motor de ingeniería inversa semántica capaz de **leer el nombre físico del archivo para auto-asignarle etiquetas (*tags*)** que ya existan en el historial global del sistema. 
+
+Esta herramienta es ideal para indexar masivamente carpetas nuevas cuyos archivos ya contengan nombres descriptivos, evitando que tengas que escribir los tags de forma manual uno por uno.
+
+---
+
+### 5.3.1 El Algoritmo de Descomposición Lógica
+
+Cuando se ejecuta esta función, el sistema analiza la cadena de texto del nombre del archivo y la procesa bajo un flujo estricto de filtrado para complementar los metadatos:
+
+1. **Fragmentación por Partículas:** El motor toma el nombre del archivo y lo divide en palabras o fragmentos utilizando los separadores comunes (como guiones o guiones bajos).
+2. **Priorización de Coincidencias:** El algoritmo compara los fragmentos contra el diccionario histórico global del Master de la siguiente manera:
+   * **Paso A:** Busca primero coincidencias con **tags compuestos** (para evitar fragmentar conceptos como `bosque-de-chapultepec` en palabras individuales).
+   * **Paso B:** Busca coincidencias con **tags simples** en el texto restante.
+3. **Filtro de Exclusión Activo:** El motor respeta la *Lista de Palabras a Ignorar* (configurada en el punto 5.1). Si un fragmento coincide con términos basura como `wallpaper` o `ftop.com`, lo descarta de inmediato.
+4. **Criterio de Omisión Estricto:** Si una palabra del nombre del archivo **no existe previamente** en el historial de etiquetas del sistema, el Master la ignorará por defecto. Esto evita que se inyecten códigos aleatorios, números de serie o texto basura al JSON de metadatos.
+
+> ➕ **Comportamiento Aditivo (No Destructivo):**
+> Esta función es estrictamente complementaria. Las etiquetas rescatadas del nombre del archivo se sumarán a los tags que la imagen ya pudiera tener capturados en el archivo `datos_carpeta.json`; **nunca sustituye ni borra** la información preexistente.
+
+---
+
+### 5.3.2 Flujos de Ejecución y Atajos de Teclado
+
+Para integrarse perfectamente con tu flujo de trabajo en "piloto automático", esta utilidad cuenta con dos comandos rápidos dedicados:
+
+* ⌨️ **Extracción Individual (`Ctrl + T`):** Analiza única y exclusivamente el nombre del archivo de la imagen activa que se encuentra cargada en el Canvas de trabajo, inyectando los tags resultantes en ese momento.
+* ⌨️ **Extracción Masiva (`Ctrl + Shift + T`):** Ejecuta el algoritmo en lote sobre **todas las imágenes que estén visibles actualmente en la tira de miniaturas** (respetando los switches de calidad o filtros de tags activos en ese microsegundo), indexando catálogos enteros en un solo parpadeo.

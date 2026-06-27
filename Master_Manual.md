@@ -22,10 +22,7 @@ Para ofrecer un flujo de trabajo fluido y visual, la pantalla principal del Mast
 <div align="center">
 <img width="1559" height="969" alt="image" src="https://github.com/user-attachments/assets/0bd23f78-55b7-4825-874b-b98800a217a9" />
 </div>
-
-
 ---
-
 ## 2. Diagnóstico Automático y Clasificación de Imágenes
 
 En el momento exacto en que seleccionas y abres una carpeta de trabajo, el Master ejecuta un proceso en segundo plano que analiza cada archivo de imagen. El sistema extrae la resolución en píxeles ($ancho \times alto$) y calcula de forma matemática la relación de aspecto, comparándola inmediatamente con tu pantalla actual.
@@ -75,3 +72,34 @@ El proceso de carga se gestiona a través de los siguientes componentes:
 
 > ℹ️ **Recordatorio de Persistencia:**
 > Recuerda que el proceso es totalmente independiente: cada carpeta que decidas abrir mediante este método generará de forma automática y aislada su propio archivo `datos_carpeta.json` en su raíz.
+
+### 4.2 Control de Filtros Globales y Estadísticas de Calidad
+
+Inmediatamente después del cuadro de ruta, en la **Zona Superior**, se ubica el panel de control de estados. Este bloque está compuesto por tres interruptores (*switches*) diferenciados por colores, los cuales actúan como el primer gran filtro del catálogo.
+
+<div align="center">
+  <img width="468" height="38" alt="image" src="https://github.com/user-attachments/assets/e569bf0a-64a0-40a0-9ef5-5dfb868e04b7" />
+</div>
+
+Cada interruptor representa una de las clasificaciones automáticas de calidad y cuenta con un sistema de doble indicador numérico:
+
+*   **🟢 Apta (Verde):** Filtra las imágenes que encajan perfectamente con la pantalla actual.
+*   **🔵 Crop (Azul):** Filtra las imágenes de alta resolución que requieren un reencuadre.
+*   **🔴 LowRes (Rojo):** Filtra las imágenes que no alcanzan la resolución mínima nativa.
+
+#### ¿Cómo leer los indicadores numéricos?
+Junto al título de cada clasificación verás dos números que se actualizan en tiempo real:
+1.  **Primer número (Total de Categoría):** Te indica la cantidad absoluta de imágenes dentro de la carpeta que pertenecen a esa clasificación de calidad específica.
+2.  **Segundo número (Entre paréntesis):** Es un contador dinámico. Te muestra cuántas de esas imágenes están siendo desplegadas actualmente en la tira de miniaturas (*thumbs*) de la izquierda debido a que cumplen con el resto de los filtros activos (como las etiquetas o el buscador).
+
+#### Comportamiento de los Switches y Código de Color Visual:
+*   **Activo (ON):** El sistema incluye las imágenes de esta categoría en la lista de exploración.
+*   **Inactivo (OFF):** Oculta por completo la categoría de la tira de miniaturas, permitiéndote limpiar la vista de trabajo para enfocarte únicamente en el grupo de imágenes que deseas curar.
+
+> 🎨 **Sincronización Visual Dinámica:**
+> El color asignado a cada interruptor (**Verde, Azul y Rojo**) no es casualidad. Existe una correspondencia directa con la **Columna Izquierda**: cada miniatura (*thumb*) en la tira de navegación se renderiza con un borde del color que coincide con su diagnóstico actual. 
+> * Si ves una miniatura con **borde verde**, sabrás al instante que es **APTA**.
+> * Si el **borde es azul**, la imagen está marcada para **CROP**.
+> * Si el **borde es rojo**, sabrás de inmediato que es una imagen **LowRes**.
+> <div align="center"><img width="319" height="454" alt="image" src="https://github.com/user-attachments/assets/778c46cf-f149-49f8-b3a5-d2b0ca50c3dc" /></div>
+> Esto te permite escanear visualmente todo tu catálogo con un solo vistazo antes de interactuar con él.

@@ -144,3 +144,45 @@ Su funcionamiento y lógica de seguridad operan de la siguiente manera:
 
 > 💡 **Nota de usabilidad (Bandeja del Sistema):**
 > Si presionas el botón y el Master te muestra la alerta de que ya está activo, pero no ves ninguna ventana flotante, recuerda que **el Companion está diseñado para trabajar de forma discreta y puede encontrarse minimizado en la bandeja del sistema (system tray)**, junto al reloj de Windows. Puedes interactuar con él directamente desde su icono en esa barra.
+
+### 4.5 Motor de Búsqueda Avanzado y Filtro de Etiquetas (Tags)
+
+Al inicio de la **Columna Izquierda** se ubica el cuadro de edición de búsqueda. Este componente es uno de los módulos más potentes del Master: no se limita a buscar palabras simples, sino que procesa operadores lógicos y comandos virtuales en tiempo real para segmentar tu catálogo de forma quirúrgica.
+<div align="center">
+<img width="339" height="52" alt="image" src="https://github.com/user-attachments/assets/9036caac-aa63-472c-b352-7a5267739301" />
+</div>
+
+> 💡 **Ayuda en Interfaz:** Si dejas el cursor del ratón (*hover*) posicionado sobre este cuadro de texto, el sistema desplegará un mensaje emergente (*tooltip*) con un resumen rápido de los comandos admitidos.
+
+---
+
+#### A) Operadores Lógicos de Sintaxis
+
+Puedes combinar palabras clave (que buscan coincidencia tanto en las etiquetas asignadas como en el nombre del propio archivo) utilizando los siguientes operadores de filtrado:
+
+| Operador | Tipo de Lógica | Función | Ejemplo Práctico |
+| :---: | :---: | --- | --- |
+| **` ` (Espacio)** | **Término Básico** | Separa condiciones obligatorias consecutivas de forma general. | `paisaje montaña` |
+| **`+`** | **Y (AND)** | **Condición Estricta.** La imagen debe contener obligatoriamente todos los términos unidos por el más. | `dress+high_heels` |
+| **`,`** | **O (OR)** | **Grupos Independientes.** Separa bloques de búsqueda. El sistema mostrará la imagen si cumple con al menos uno de los bloques aislados por la coma. | `cat, dog` |
+| **`-`** | **NO (NOT)** | **Exclusión.** Descarta y oculta cualquier imagen que contenga la palabra que sigue al signo de resta. | `-beach -short` |
+
+---
+
+#### B) Comandos Virtuales de Estado
+
+Adicionalmente al texto de las etiquetas, puedes escribir palabras clave precedidas de dos puntos (`:`) para interrogar directamente los metadatos o el estado interno de conservación de cada wallpaper:
+
+* **`:favorita` o `:favoritas`**: Muestra exclusivamente las imágenes que has marcado con la estrella de selección especial.
+* **`:nofavorita` o `:nofavoritas`**: Muestra las imágenes comunes que no forman parte de tus destacadas.
+* **`:tag`**: Filtra y expone únicamente las imágenes que ya tienen asignada al menos una etiqueta. Ideal para revisar lo que ya has trabajado.
+* **`:notag`**: Muestra todas las imágenes que se encuentran completamente limpias y sin etiquetas. Ideal para identificar el trabajo que tienes pendiente por clasificar.
+
+---
+
+#### C) Caso de Éxito: Ejemplo Combinado Complejo
+
+La verdadera potencia del motor radica en que puedes mezclar todo lo anterior en una sola línea de búsqueda. Observa cómo el sistema interpreta la siguiente instrucción:
+
+```text
+:favorita dress+high heels, blonde+high heels -beach

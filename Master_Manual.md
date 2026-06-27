@@ -346,3 +346,67 @@ El flujo de captura está optimizado para que no tengas que soltar el teclado en
 
 > ⌨️ **Recordatorio de Navegación:**
 > Recuerda que mientras estés editando tags, el control del *Crop* en el Canvas superior quedará temporalmente suspendido. Para volver a mover el marco de recorte con las flechas, simplemente presiona **`Tab`** para trasladar el foco de la interfaz de vuelta al área de trabajo.
+
+### 4.8.3 Barra de Información Dinámica del Archivo
+
+Ubicada justo debajo del editor de etiquetas, se encuentra una línea de metadatos dividida estratégicamente en **tres columnas independientes**. Este bloque proporciona un desglose informativo completo del archivo activo y un acceso directo al sistema de archivos de Windows.
+
+<div align="center">
+  <img width="1483" height="45" alt="image" src="https://github.com/user-attachments/assets/ad1b860d-16c0-4921-8a4d-15fc8fd6c413" />
+</div>
+
+#### 🏛️ Estructura de las Tres Columnas:
+
+* **Columna 1: Acceso Directo al Archivo (`Archivo: [Nombre]`)**
+    * Muestra la etiqueta `Archivo:` seguida del nombre completo de la imagen actual resaltado en **color azul**.
+    * 🖱️ **Acción Especial (Doble Clic):** Si haces doble clic izquierdo sobre el nombre en azul, el Master ejecutará un comando del sistema que **abrirá instantáneamente la carpeta contenedora en el Explorador de Windows, dejando el archivo de la imagen actual seleccionado mecánicamente**. Es ideal para copiar, mover o respaldar el archivo físico sin buscarlo manualmente.
+
+* **Columna 2: Cintillo de Estados en Tiempo Real**
+    * Este bloque funciona como un espejo informativo de control. Despliega en grande el diagnóstico técnico de calidad (**🟢 Apta / 🔵 Crop / 🔴 LowRes**) y los 5 indicadores de proceso que tenga activos la imagen en ese microsegundo (**⭐ Fav**, **✂️ Crop**, **↔️ Flip**, **⚠️ Ignorar**, **❌ Eliminar**).
+    * Su paleta de colores, iconos y nomenclaturas coinciden exactamente con los de la tira de *thumbs* izquierda, permitiendo una confirmación visual rápida mientras trabajas en el Canvas.
+
+* **Columna 3: Dimensiones Físicas (`Tamaño (px): Ancho x Alto`)**
+    * Muestra de forma estrictamente informativa la resolución nativa real del archivo de imagen en píxeles (por ejemplo: `3840 x 2160`). Te sirve como métrica de referencia para entender por qué el software le asignó su categoría de calidad actual.
+
+### 4.8.4 Panel de Acciones y Botonera Operativa
+
+Ubicada en la parte inferior del Área de Trabajo, se encuentra la barra de herramientas principal. Está distribuida de forma uniforme y agrupa todos los controles de edición de estado, navegación acelerada y el módulo destructor de archivos.
+
+<div align="center">
+  <img width="1555" height="41" alt="image" src="https://github.com/user-attachments/assets/66f86a11-cc0d-40f3-a4fb-ccc2ec8b94f9" />
+</div>
+
+#### 🎮 Comportamiento de Conmutación (*Toggle*)
+La mayoría de los botones operan bajo una lógica de conmutación de estados (*toggle*). Al presionarlos (o usar su atajo de teclado), la imagen alternará instantáneamente entre tener el estado activo o inactivo en la base de datos JSON.
+
+---
+
+#### 🛠️ Desglose de Controles y Atajos de Teclado:
+
+| Botón | Atajo de Teclado | Tipo de Acción | Comportamiento y Efecto Visual |
+| :--- | :---: | :---: | :--- |
+| **`< Previa`** | **`RePág`** | Navegación | Retrocede de forma secuencial a la imagen anterior del catálogo filtrado. |
+| **`Confirmar`** | **`Enter`** | Validación Acelerada | Consolida y guarda la posición actual del marco de recorte en el JSON. **Función clave para el "piloto automático":** si el *Crop* centrado que el sistema calcula por defecto te parece correcto, basta con presionar `Enter` para asegurar la posición de inmediato sin necesidad de interactuar con el mouse o reajustar con las flechas. *(Fondo Verde).* |
+| **`Flip`** | **`Ctrl + H`** | Estado Visual | Invierte horizontalmente el wallpaper **exclusivamente dentro del Canvas grande como simulación de composición**. No altera el archivo físico ni modifica la vista de la miniatura izquierda. |
+| **`Favorita`** | **`Ctrl + F`** | Estado / Tag | Añade o remueve la estrella distintiva de selección especial. *(Fondo Amarillo).* |
+| **`Ignorar`** | **`Esc`** | Estado / Filtro | Marca la imagen para ser omitida por el rotador secundario (*Companion*). Desatura el *thumb* a blanco y negro. |
+| **`Eliminar`** | **`Supr`** *(Delete)* | Pre-Borrado | Aplica una bandera roja de destrucción y superpone el overlay de advertencia sobre la miniatura, dejándola en lista de espera. *(Fondo Rojo).* |
+| **`Siguiente >`** | **`AvPág`** | Navegación | Avanza de forma secuencial a la siguiente imagen del catálogo filtrado. |
+
+> ⚠️ **NOTA DE SEGURIDAD DE FOCO (Conflicto con la tecla Enter):**
+> Al igual que sucede con las flechas de dirección, la tecla **`Enter` NO funcionará para confirmar o establecer el Crop si el cursor se encuentra parpadeando dentro de algún área de edición de texto** (ya sea en el filtro de tags superior o en el editor de tags de la imagen). En esos casos, `Enter` se reservará exclusivamente para procesar el texto escrito. Recuerda presionar **`Tab`** para salir del cuadro de texto, recuperar el foco en el Canvas y reactivar el guardado rápido del recorte.
+
+---
+
+#### 🗑️ El Botón Rojo de Destrucción (Vaciar Papelera Global)
+
+El último botón de la cuadrícula (identificado con el icono **🗑️** y un color rojo intenso) es **el único componente que realiza una acción destructiva directa sobre tus archivos físicos**. <img width="192" height="32" alt="image" src="https://github.com/user-attachments/assets/2466e6e2-91fe-4f4d-9303-012f5a7774e1" />
+
+
+Las imágenes marcadas con la bandera de "Eliminar" (con el botón o la tecla `Supr`) no se borran del disco duro de inmediato; permanecen en un estado de retención seguro dentro de la aplicación. Para consolidar el borrado, debes ejecutar este módulo:
+
+1.  **Activación:** Haz clic en el botón **🗑️**.
+2.  **Cuadro de Confirmación de Seguridad:** El Master interrumpirá la pantalla mostrando una ventana de alerta del sistema que te informará explícitamente:
+    * La cantidad exacta de imágenes que están a punto de ser procesadas.
+    * La advertencia de que los archivos serán removidos de su directorio actual y transferidos directamente a la **Papelera de Reciclaje de Windows**.
+3.  **Ejecución:** Los archivos físicos no serán alterados a menos que confirmes la acción en dicha ventana emergente, dándote una red de seguridad infalible contra borrados accidentales.

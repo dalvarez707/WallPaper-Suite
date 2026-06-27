@@ -410,3 +410,76 @@ Las imágenes marcadas con la bandera de "Eliminar" (con el botón o la tecla `S
     * La cantidad exacta de imágenes que están a punto de ser procesadas.
     * La advertencia de que los archivos serán removidos de su directorio actual y transferidos directamente a la **Papelera de Reciclaje de Windows**.
 3.  **Ejecución:** Los archivos físicos no serán alterados a menos que confirmes la acción en dicha ventana emergente, dándote una red de seguridad infalible contra borrados accidentales.
+---
+# 5. Utilidades Avanzadas
+
+Este capítulo cubre las herramientas modulares del Master que operan fuera de la interfaz principal. Estas funciones te permiten parametrizar el comportamiento global del sistema y automatizar la gestión de archivos en lote.
+
+---
+
+## 5.1 Ventana de Configuración de Jerarquías (`Ctrl + D`)
+
+Para abrir el panel de control semántico, presiona la combinación **`Ctrl + D`** en cualquier momento. Se desplegará una ventana emergente que te permitirá dictar las reglas de etiquetado universal que afectarán a tus catálogos.
+
+<div align="center">
+  <img width="584" height="490" alt="image" src="https://github.com/user-attachments/assets/f16ad0d6-9210-405b-ae9e-ca49a0b024af" />
+</div>
+
+#### Sistema de Captura Predictiva Global
+A diferencia del editor de tags rápido, los campos de jerarquía de esta ventana cuentan con un potente **motor predictivo inteligente**. Al comenzar a escribir, el sistema rastrea el historial de archivos `datos_carpeta.json` de todos tus catálogos guardados para sugerirte etiquetas existentes. Esto garantiza que la estructura que definas sea consistente en todos tus proyectos.
+
+#### Campos de Parametrización:
+
+1. **Campo Nivel 1 (Jerarquía Principal):** Define el bloque de etiquetas maestras. El tag que coincida con esta regla se moverá al inicio absoluto del nuevo nombre del archivo.
+2. **Campo Nivel 2 (Jerarquía Secundaria):** Aloja las etiquetas de segundo orden que flanquearán al bloque principal.
+3. **Campo Nivel 3 (Jerarquía Terciaria):** Contenedor de etiquetas de detalle o subcategorías.
+4. **Filtro de Palabras Ignorables:** Campo de texto libre donde puedes introducir cadenas de basura comercial o técnica (ej. `wallpaper, ftop.com, download`) separadas estrictamente por **comas (`,`)**.
+
+> 💡 **Gestión de Tags en la Ventana:**
+> Los tags seleccionados para las jerarquías se muestran como bloques o "pills". Para eliminar una etiqueta de cualquier nivel de jerarquía, simplemente haz clic en el icono **`X`** situado junto a su nombre.
+
+---
+
+## 5.2 Módulo de Renombrado Basado en Tags (Normalizador Semántico)
+
+Una vez establecidas tus reglas en el panel de configuración, el motor del Master queda listo para reorganizar y estandarizar los nombres de tus archivos en disco duro de forma inteligente.
+
+### 5.2.1 El Algoritmo de Sanitización Profunda
+Cuando se ejecuta la orden de renombrado, el sistema realiza un análisis sintáctico sobre el archivo activo para prevenir nombres redundantes o caracteres inválidos:
+
+* **Conversión de Espacios:** El motor transforma automáticamente cualquier espacio de un *tag compuesto* en un guion medio (por ejemplo, `bosque de chapultepec` se convierte en `bosque-de-chapultepec`).
+* **Detección de Redundancia de Tags:** El algoritmo analiza el nombre original de la imagen; si encuentra palabras que ya van a ser incluidas mediante las etiquetas, las elimina del nombre viejo para que no se dupliquen. El análisis se ejecuta de forma inteligente: primero busca tags compuestos y luego tags simples para no fragmentar las palabras.
+* **Purga de Basura:** Remueve cualquier coincidencia exacta con la lista de palabras ignorables configurada en el punto 5.1.
+
+#### 📋 Caso de Estudio (Ejemplo de Proceso):
+* **Tags en la imagen:** `bosque`, `invierno`, `bosque de chapultepec`, `paisaje`
+* **Nombre original:** `bosque_amanecer_limpio_wallpaper_ftop.com_024217.jpg`
+* **Resultado del Nombre Depurado:** `amanecer_limpio_024217.jpg`
+
+---
+
+### 5.2.2 Flujos de Trabajo y Atajos de Ejecución
+
+El renombrado puede aplicarse en dos modalidades de lote utilizando comandos rápidos de teclado:
+
+* ⌨️ **Renombrado Individual (`Ctrl + T`):** Procesa única y exclusivamente la imagen activa que se encuentra cargada en el Canvas de trabajo.
+* ⌨️ **Renombrado Masivo (`Ctrl + Shift + T`):** Ejecuta el algoritmo en lote sobre **todas las imágenes que estén visibles actualmente en la tira de miniaturas** (respetando los switches de calidad o filtros de tags activos en ese microsegundo).
+
+#### Opciones de Salida del Archivo:
+
+1. **Con Nombre Depurado Incluido (Recomendado):** Fusiona la estructura jerárquica con los elementos únicos que sobrevivieron a la limpieza.
+   * *Resultado:* `paisaje_bosque_bosque-de-chapultepec_invierno_amanecer_limpio_024217.jpg`
+2. **Sin Nombre Original (Identificación Estricta):** Elimina por completo el nombre de origen y rebautiza el archivo usando únicamente las jerarquías y el bloque alfabético de tags.
+   * *Resultado:* `paisaje_bosque_bosque-de-chapultepec_invierno.jpg`
+
+---
+
+### 5.2.3 Mecanismo Anticolisiones de Archivos (`-wpm###`)
+
+Al utilizar la opción "Sin Nombre Original" o al procesar sets de imágenes con etiquetas idénticas, el sistema previene activamente que Windows sobrescriba o destruya archivos duplicados. 
+
+Si el Master detecta que el nombre final generado ya existe físicamente en el directorio, inyectará de forma automática el sufijo seguro `-wpm` seguido de un contador numérico consecutivo de tres dígitos antes de la extensión:
+
+* *Archivo original o base:* `paisaje_bosque_bosque-de-chapultepec_invierno.jpg`
+* *Segundo archivo idéntico:* `paisaje_bosque_bosque-de-chapultepec_invierno-wpm001.jpg`
+* *Tercer archivo idéntico:* `paisaje_bosque_bosque-de-chapultepec_invierno-wpm002.jpg`

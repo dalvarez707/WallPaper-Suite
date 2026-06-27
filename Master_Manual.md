@@ -269,3 +269,45 @@ Para mantener ese flujo de trabajo en "piloto automático" y no depender exclusi
   * ⬇️ **`AvPág` (Page Down):** Salta inmediatamente a la imagen **siguiente** de la lista.
 
 Al usar cualquiera de los dos métodos, la imagen se seleccionará, la flecha negra se moverá a su costado y el Canvas derecho se actualizará al instante con el archivo seleccionado.
+
+### 4.8.1 El Canvas de Previsualización Dinámica y Herramienta de Recorte (*Crop*)
+
+El Canvas es el lienzo interactivo principal donde se proyecta la imagen seleccionada en la tira de miniaturas. Además de servir como monitor a gran escala, es el entorno donde se calcula y ejecuta el reencuadre de los fondos de pantalla.
+
+<div align="center">
+  <img width="1562" height="818" alt="image" src="https://github.com/user-attachments/assets/ae706cad-eb9b-41ca-af96-eba672f8e130" />
+</div>
+
+#### 📐 El Marco Matemático de Reencuadre (Aspect Ratio Mask)
+Cuando la imagen activa tiene un diagnóstico de calidad **CROP** o **LowRes**, el Canvas proyecta automáticamente una máscara de recorte en forma de recuadro. 
+
+*   **Composición del Marco:** Consiste únicamente en un **borde perimetral delgado**, manteniendo el interior completamente transparente para no obstruir la visibilidad del wallpaper.
+*   **Proporción Inteligente:** Las dimensiones de este marco se calculan matemáticamente en tiempo real de forma proporcional a la relación de aspecto del monitor (en este manual, $16:9$).
+*   **Código de Color de Estado:**
+    *   **🟡 Borde Amarillo:** Indica que el reencuadre está **Pendiente**. Es el estado inicial de una imagen *Crop* que aún no ha sido guardada.
+    *   **🟢 Borde Verde:** Indica que el reencuadre ha sido **Establecido y Guardado** con éxito en el archivo JSON.
+
+> ⚠️ **Aclaración sobre el Curado LowRes:**
+> El sistema permite aplicar de forma libre el marco de recorte sobre imágenes catalogadas como **LowRes**. Sin embargo, debes tener en cuenta que, al forzar su uso como wallpaper, la imagen podría lucir pixelada en tu monitor debido a su falta de resolución nativa.
+
+---
+
+#### 🎮 Restricción de Ejes y Métodos de Ajuste
+
+El marco inteligente detecta la orientación excedente del wallpaper y **bloquea automáticamente los ejes** que no necesitas, permitiéndote deslizar el encuadre únicamente hacia donde hay píxeles disponibles:
+*   Si la imagen es **más alta** que la proporción del monitor, el marco se deslizará estrictamente en el **eje vertical** (Arriba / Abajo).
+*   Si la imagen es **más larga**, el marco se deslizará estrictamente en el **eje horizontal** (Izquierda / Derecha).
+
+Para ajustar la composición perfecta, puedes utilizar dos métodos indistintos:
+
+1.  **Control con Ratón (Arrastrar y Soltar):** Haz clic izquierdo sostenido dentro del recuadro, arrástralo hasta la posición deseada y suelta el botón. El sistema capturará las coordenadas exactas y guardará el cambio de manera automática (el borde cambiará a verde).
+2.  **Control Fino con Teclado (Flechas de Dirección):** Puedes usar las flechas del teclado (`↑` `↓` `←` `→`) para desplazar el marco píxel por píxel. Las flechas activas corresponderán únicamente al eje excedente de la imagen.
+
+---
+
+#### ⌨️ Gestión de Foco e Interrupción del Teclado
+
+> ⚠️ **NOTA DE USABILIDAD (Conflicto de Teclas):**
+> Las flechas de dirección del teclado **no moverán el marco de recorte si el cursor está parpadeando dentro de un cuadro de texto** (como el filtro de búsqueda o el editor de etiquetas), ya que en ese momento el sistema prioriza la escritura.
+> 
+> *   **Solución Rápida:** Presiona la tecla **`Tab`** para alternar el foco de la interfaz. Al pulsarla, saltarás instantáneamente del área de edición de texto de vuelta al área de trabajo del Canvas, reactivando las flechas para el control del *Crop*.

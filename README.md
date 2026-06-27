@@ -44,7 +44,7 @@ Diseñado bajo una arquitectura de optimización pasiva y procesamiento dinámic
 Este ecosistema fue desarrollado de forma independiente con un enfoque utilitario, libre de publicidad y centrado en el rendimiento. Si Wallpaper Suite te ha ayudado a automatizar y dar vida a tu escritorio, ¡considera invitarme un café para apoyar futuras actualizaciones!
 
 <div align="center">
-  <a href="URL_DE_TU_LINK_DE_COFFEE_AQUÍ" target="_blank">
+  <a href="https://ko-fi.com/X8X7DW0T" target="_blank">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200" />
   </a>
 </div>

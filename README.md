@@ -14,3 +14,6 @@ Es una aplicación ligera y eficiente que actúa como el motor de visualización
 - Selección Dinámica: Permite elegir imágenes desde una o múltiples carpetas fuente.
 - Filtrado por Metadatos: Aplica los filtros definidos en Master (tags), permitiéndote rotar solo el contenido que se ajuste a tu estado de ánimo o temática actual.
 - Gestión de Tiempo: Controla el intervalo de rotación de forma precisa y fluida, optimizando el consumo de recursos de tu sistema.
+
+> 🔒 Compromiso de Integridad
+Wallpaper Suite utiliza un enfoque de lectura-referencia. Tu colección original nunca es modificada; el software solo crea los índices necesarios para organizar tu experiencia de visualización.

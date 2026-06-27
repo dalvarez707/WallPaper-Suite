@@ -118,7 +118,7 @@ Cuando intentas cerrar la ventana principal del Companion presionando la **`X`**
 Al hacer clic derecho sobre el icono del Companion en la bandeja del sistema, se desplegará un menú rápido dividido en 5 secciones operativas que te permiten controlar el estado de tu escritorio al vuelo:
 
 <div align="center">
-  <img width="303" height="277" alt="image" src="https://github.com/user-attachments/assets/5fb9c04b-ca06-450b-85be-971d09efc841" />
+<img width="303" height="277" alt="image" src="https://github.com/user-attachments/assets/6a722f4b-f65d-46fb-8820-d27d3600ee7f" />
 </div>
 
 #### 1. Identificación de Archivo

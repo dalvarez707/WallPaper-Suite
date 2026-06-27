@@ -58,7 +58,6 @@ En esta sección se detalla el proceso paso a paso para operar el sistema. Para 
 ---
 
 ### 4.1 Selección de Ruta y Carga Inicial de Archivos
-### 4.1 Selección de Ruta y Carga Inicial de Archivos
 
 El flujo de trabajo comienza en la **Zona Superior** de la interfaz, utilizando los controles de dirección de carpetas.
 

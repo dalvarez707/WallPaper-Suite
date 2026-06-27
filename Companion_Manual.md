@@ -148,3 +148,34 @@ El comportamiento de esta sección se adapta de manera inteligente al modo de pr
 #### 5. Enlaces del Ecosistema y Salida
 * **Abrir Master:** Lanza de forma automatizada la interfaz del *Master*. El sistema cuenta con una pasarela de seguridad que **comprueba que no esté abierto previamente** para evitar redundancias de procesos en memoria. Al ejecutarse, el Master se abrirá cargando por defecto la última carpeta en la que estuviste trabajando.
 * **SALIR:** El comando definitivo de apagado. Volverá a lanzar el cuadro de confirmación para asegurar que realmente deseas terminar el servicio del Companion.
+
+# 4. Lógica de Aleatoriedad y Sincronización de Datos
+
+Para mantenerse como un servicio ultra-ligero de bajo consumo de recursos (CPU y RAM), el Companion opera bajo reglas específicas de gestión de memoria dinámica y lectura pasiva de metadatos.
+
+---
+
+### 4.1 El Algoritmo de "Banca" en el Modo Aleatorio
+
+Cuando el Modo Aleatorio está activo, el sistema ejecuta un algoritmo inteligente de descarte temporal para evitar la repetición constante de imágenes, asegurando que tu escritorio se sienta verdaderamente variado:
+
+* **La Regla de los 2/3:** El Companion lleva un registro en la memoria RAM de las imágenes que ya ha proyectado en pantalla. El motor retira de forma automática estas imágenes del "pool" o bolsa de selección disponible hasta alcanzar un límite equivalente a los **2/3 del total** de archivos que cumplen con tus filtros.
+* **Flujo Consecutivo (FIFO):** Al superar el límite de los 2/3, el sistema aplica un método de "salida de la banca": libera la primera imagen que fue guardada en el registro histórico y la devuelve al pool de selección, permitiendo que pueda volver a aparecer en el futuro.
+
+> 🧠 **Naturaleza Volátil (Efecto Amnesia):**
+> El Companion prioriza el rendimiento del sistema, por lo que **no guarda en el disco duro cuáles imágenes ha mostrado**. Si reinicias el programa, cambias de usuario o apagas el equipo:
+> * En **Modo Aleatorio**, el registro de los 2/3 se vacía por completo (el pool se reinicia).
+> * En **Modo Secuencial**, el contador vuelve al inicio del catálogo.
+> En pocas palabras: ¡cada vez que el sistema arranca, la aventura vuelve a empezar desde cero!
+
+---
+
+### 4.2 Sincronización Pasiva de Catálogos (Archivos JSON)
+
+El Companion está diseñado para no saturar tu procesador con tareas secundarias de monitoreo activo en segundo plano. Por ello, la lectura de los metadatos modificados en el Master se realiza de forma pasiva:
+
+* **Detección de Cambios:** El Companion **no detecta de forma activa** si añadiste nuevos tags, si cambiaste un encuadre de *Crop* o si marcaste una imagen como favorita dentro del software Master mientras el servicio está corriendo en el System Tray.
+* **Mecanismo de Recarga:** Para actualizar los datos de las imágenes con las que trabaja el Companion, simplemente **abre la ventana principal del programa** (haciendo doble clic en el icono del System Tray). El acto de desplegar la interfaz fuerza al motor a reescanear los archivos `datos_carpeta.json` de las rutas activas, refrescando el pool de inmediato.
+
+> 🛠️ **Nota de Arquitectura:**
+> Este comportamiento pasivo evita tener que implementar un temporizador (*timer*) adicional o un monitor de archivos en bucle dentro del sistema, garantizando que el impacto del Companion en el rendimiento de tu computadora sea prácticamente imperceptible.

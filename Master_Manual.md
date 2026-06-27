@@ -218,3 +218,54 @@ Su funcionamiento es directo y automático:
 
 > 🔄 **Aplicación Inmediata:**
 > Al igual que el resto de los controles del Master, no necesitas confirmar la acción. Al cambiar la selección en esta lista desplegable, el orden de la tira de miniaturas (*thumbs*) se reestructurará en tiempo real en la pantalla.
+
+### 4.7 Catálogo Gráfico y Estado de Miniaturas (Tira de Thumbs)
+
+Ubicada en la **Columna Izquierda**, justo debajo de las herramientas de ordenamiento, se encuentra la **Tira de Miniaturas (Thumbs)**. Este componente actúa como el catálogo visual interactivo de la carpeta y sirve como un tablero de control rápido, ya que cada miniatura refleja fielmente los procesos, etiquetas y estados aplicados a la imagen.
+
+<div align="center">
+  <img width="322" height="472" alt="image" src="https://github.com/user-attachments/assets/e6b40389-15f7-46d2-83c7-9b86c44821b3" />
+</div>
+
+#### Características del Renderizado Visual:
+* **Dimensión Óptima:** Las imágenes se despliegan con una altura máxima fija de **120px**, pero **mantienen estrictamente su relación de aspecto original** en su contenedor para evitar distorsiones visuales.
+* **Preservación Original:** La miniatura en la tira **siempre mostrará la imagen en su estado físico original** (por ejemplo, si aplicas un *Flip Horizontal*, este se reflejará en el Canvas de trabajo derecho, pero el *thumb* conservará su orientación base).
+
+---
+
+#### 🎨 Capas de Información y Código de Indicadores:
+
+Cada miniatura puede acumular uno o varios de los siguientes indicadores visuales de forma simultánea según su estado actual en el archivo `datos_carpeta.json`:
+
+1. **Bordes por Categoría de Calidad:**
+   * **🟢 Borde Verde:** Imagen **APTA** (óptima para la pantalla).
+   * **🔵 Borde Azul:** Imagen marcada para **CROP** (requiere reencuadre).
+   * **🔴 Borde Rojo:** Imagen identificada como **LowRes** (baja resolución).
+
+2. **Indicador de Selección Activa (Flecha Negra):**
+   * Una pequeña **flecha negra** se posicionará sobre el extremo izquierdo de la miniatura que esté seleccionada actualmente. La imagen que posea esta flecha se cargará de inmediato en el Canvas de trabajo del panel derecho.
+
+3. **Etiquetas de Proceso (Borde Derecho):**
+   * **⭐ +Fav:** Se muestra si la imagen ha sido marcada en tu lista de favoritas.
+   * **✂️ +Crop:** Se añade si la imagen ya cuenta con coordenadas de recorte válidas y personalizadas.
+   * **↔️ +Flip:** Indica que la imagen tiene activo el reflejo horizontal para mejorar su composición.
+   * **🏷️ +Tag:** Aparece si la imagen ya tiene una o más palabras clave (etiquetas) asignadas.
+
+4. **Estado de Exclusión (Ignorar):**
+   * **⚠️ +Ignorar:** Si marcas una imagen para ser omitida por el rotador, aparecerá esta etiqueta en el borde derecho, **todo el marco de la miniatura se tornará gris y la imagen se desaturará (blanco y negro)** para denotar su inactividad.
+
+5. **Bandera de Destrucción (Eliminar):**
+   * **❌ MARCADA PARA ELIMINAR:** Si etiquetas una imagen para ser borrada, se le aplicará un **bloqueo visual completo con un overlay translúcido de color ROJO** y un texto superpuesto con la advertencia, destacándola inmediatamente del resto.
+
+---
+
+#### ⌨️ Navegación y Control por Teclado
+
+Para mantener ese flujo de trabajo en "piloto automático" y no depender exclusivamente del ratón, el Master cuenta con un sistema de navegación dual:
+
+* **Navegación por Ratón:** Haz un clic izquierdo directo sobre cualquier miniatura de la tira para activarla.
+* **Navegación por Teclado:** Puedes explorar el catálogo de forma fluida utilizando las teclas:
+  * ⬆️ **`RePág` (Page Up):** Salta inmediatamente a la imagen **anterior** de la lista.
+  * ⬇️ **`AvPág` (Page Down):** Salta inmediatamente a la imagen **siguiente** de la lista.
+
+Al usar cualquiera de los dos métodos, la imagen se seleccionará, la flecha negra se moverá a su costado y el Canvas derecho se actualizará al instante con el archivo seleccionado.

@@ -103,3 +103,44 @@ Junto al título de cada clasificación verás dos números que se actualizan en
 > * Si el **borde es rojo**, sabrás de inmediato que es una imagen **LowRes**.
 > <div align="center"><img width="319" height="454" alt="image" src="https://github.com/user-attachments/assets/778c46cf-f149-49f8-b3a5-d2b0ca50c3dc" /></div>
 > Esto te permite escanear visualmente todo tu catálogo con un solo vistazo antes de interactuar con él.
+
+### 4.3 Selectores de Estado Avanzados (Filtros de Proceso)
+
+Para un control quirúrgico de tu colección, la **Zona Superior** incluye cuatro listas desplegables (*selectores*). Estos selectores te permiten filtrar las imágenes basándose en las acciones o decisiones de curado que hayas tomado sobre ellas.
+
+<div align="center">
+  <img width="657" height="47" alt="image" src="https://github.com/user-attachments/assets/4c252f2c-0b8b-4857-9c09-2384bf78d420" />
+</div>
+
+Los cuatro estados que puedes rastrear son:
+
+*   **Pendiente:** Aplica específicamente a las imágenes clasificadas como **CROP**. Filtra aquellas que aún no han recibido su reencuadre manual. *(Nota: Las imágenes APTAS nunca aparecerán aquí, ya que no requieren recorte).*
+*   **Flip:** Filtra las imágenes a las que se les ha aplicado un reflejo o espejo horizontal para mejorar la composición visual del fondo.
+*   **Ignorada:** Filtra las imágenes marcadas para que la aplicación secundaria (*Companion*) las pase por alto al rotar los wallpapers, sin importar si cumplen con los tags o la calidad.
+*   **Eliminar:** Filtra las imágenes que has marcado con bandera roja, pendientes de ser borradas definitivamente del disco duro.
+
+#### Modos de Operación de los Selectores (Las 3 Opciones):
+Cada una de las cuatro listas desplegables cuenta con tres modos idénticos que dictan cómo interactúan con tu catálogo:
+
+1.  **Inactivo:** El filtro no se aplica. El sistema muestra todas las imágenes sin importar si cumplen o no con ese estado específico.
+2.  **Mostrar:** Filtro restrictivo positivo. El sistema **solo mostrará** las imágenes que tengan activo ese estado (por ejemplo, si pones *Pendiente* en "Mostrar", solo verás las imágenes Crop a las que les falta su recorte).
+3.  **Ocultar:** Filtro restrictivo negativo. El sistema **esconderá por completo** las imágenes que tengan ese estado (por ejemplo, si pones *Eliminar* en "Ocultar", limpiarás tu vista de trabajo de cualquier imagen que ya hayas decidido borrar).
+
+> 🔄 **Recalculación Instantánea:**
+> El motor del Master es dinámico. En el milisegundo en que cambies el valor de cualquiera de estas listas, la tira de miniaturas (*thumbs*) de la izquierda se actualizará inmediatamente, y los números entre paréntesis de los **Switches de Calidad** se recalcularán para decirte con precisión cuántas imágenes de cada categoría sobrevivieron a tus filtros avanzados.
+
+### 4.4 Lanzamiento del motor secundario (Botón 'Companion')
+
+El último elemento de control ubicado en la **Zona Superior** es el botón **'Companion'**. Este control actúa como el puente de activación hacia el software secundario encargado de gestionar y rotar los fondos de pantalla en tu sistema.
+
+<div align="center">
+  <img width="95" height="42" alt="image" src="https://github.com/user-attachments/assets/bd48c2cc-7564-4c65-b268-5d2b865c1f19" />
+</div>
+
+Su funcionamiento y lógica de seguridad operan de la siguiente manera:
+
+*   **Lanzamiento:** Si el Companion se encuentra cerrado, al presionar este botón el Master lo ejecutará e iniciará de forma automática en segundo plano.
+*   **Alerta de Ejecución:** Si el Companion ya se está ejecutando en el sistema, el Master detectará el proceso activo y desplegará una ventana de alerta informándote que la aplicación ya está operando, evitando aperturas duplicadas innecesarias.
+
+> 💡 **Nota de usabilidad (Bandeja del Sistema):**
+> Si presionas el botón y el Master te muestra la alerta de que ya está activo, pero no ves ninguna ventana flotante, recuerda que **el Companion está diseñado para trabajar de forma discreta y puede encontrarse minimizado en la bandeja del sistema (system tray)**, junto al reloj de Windows. Puedes interactuar con él directamente desde su icono en esa barra.

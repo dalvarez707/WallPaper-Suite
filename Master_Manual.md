@@ -186,3 +186,28 @@ La verdadera potencia del motor radica en que puedes mezclar todo lo anterior en
 
 ```text
 :favorita dress+high heels, blonde+high heels -beach
+---
+> ⌨️ **Activación del Filtro (Gatillo por Teclado):**
+> Para evitar caídas de rendimiento mientras escribes comandos complejos, el motor de búsqueda no se aplica letra por letra. El filtrado se ejecutará únicamente cuando presiones la tecla **`Enter`** dentro del cuadro de edición o cuando uses la tecla **`Tab`** (o hagas clic fuera) para salir del cuadro.
+---
+#### D) Limpieza Rápida del Buscador
+
+Para agilizar el flujo de trabajo, el cuadro de edición cuenta con un mecanismo de reinicio inmediato:
+
+* **Botón de Borrado (`X`):** En el momento en que escribas cualquier caracter o tengas un filtro de búsqueda activo, aparecerá automáticamente un icono de una **`X`** en el extremo derecho del cuadro de texto. 
+* Al hacer clic sobre esta **`X`**, el motor limpiará por completo la línea de comandos de un solo paso, restableciendo de inmediato la tira de miniaturas para mostrar todo el catálogo original (según los filtros de los switches superiores).
+### 4.6 Ordenamiento del Catálogo (Ascendente / Descendente)
+
+Ubicado inmediatamente debajo del motor de búsqueda avanzada, se encuentra el selector de ordenamiento. Este control te permite definir la dirección en la que se organizará la secuencia de archivos en tu tira de exploración.
+
+<div align="center">
+  <img width="200" height="28" alt="image" src="https://github.com/user-attachments/assets/381f931d-12fd-4a9b-92cc-f6bf0d635780" />
+</div>
+
+Su funcionamiento es directo y automático:
+
+* **Orden Ascendente (Por defecto):** Organiza el catálogo de forma alfabética estándar de la **A a la Z** (o numéricamente de menor a mayor basado en el nombre del archivo de imagen).
+* **Orden Descendente:** Invierte por completo el catálogo, organizándolo de la **Z a la A**.
+
+> 🔄 **Aplicación Inmediata:**
+> Al igual que el resto de los controles del Master, no necesitas confirmar la acción. Al cambiar la selección en esta lista desplegable, el orden de la tira de miniaturas (*thumbs*) se reestructurará en tiempo real en la pantalla.

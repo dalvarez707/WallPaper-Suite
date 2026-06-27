@@ -184,8 +184,15 @@ Adicionalmente al texto de las etiquetas, puedes escribir palabras clave precedi
 
 La verdadera potencia del motor radica en que puedes mezclar todo lo anterior en una sola línea de búsqueda. Observa cómo el sistema interpreta la siguiente instrucción:
 
-```text
-:favorita dress+high heels, blonde+high heels -beach
+`:favorita dress+high heels, blonde+high heels -beach`
+
+El algoritmo del Master analiza la sintaxis y divide el catálogo ejecutando la siguiente lógica en orden:
+
+1. **Filtro Base Inicial:** Solo tomará en cuenta imágenes que sean `:favorita`.
+2. **Evaluación de Bloques (Separados por la coma `,`):**
+   * **Bloque 1:** Mostrará la imagen si tiene la etiqueta exacta `dress` **Y** la etiqueta compuesta exacta `high heels` (identificada perfectamente gracias al operador `+`).
+   * **Bloque 2:** Si la imagen no cumple con el Bloque 1, el sistema le dará una segunda oportunidad si contiene la etiqueta `blonde` **Y** la etiqueta compuesta `high heels`.
+3. **Filtro de Exclusión Global:** De todos los resultados que hayan sobrevivido a los pasos anteriores, **eliminará de la vista** cualquier imagen que contenga la palabra o etiqueta `beach`.
 ---
 > ⌨️ **Activación del Filtro (Gatillo por Teclado):**
 > Para evitar caídas de rendimiento mientras escribes comandos complejos, el motor de búsqueda no se aplica letra por letra. El filtrado se ejecutará únicamente cuando presiones la tecla **`Enter`** dentro del cuadro de edición o cuando uses la tecla **`Tab`** (o hagas clic fuera) para salir del cuadro.

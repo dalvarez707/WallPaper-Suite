@@ -513,3 +513,40 @@ Para integrarse perfectamente con tu flujo de trabajo en "piloto automático", e
 
 * ⌨️ **Extracción Individual (`Ctrl + T`):** Analiza única y exclusivamente el nombre del archivo de la imagen activa que se encuentra cargada en el Canvas de trabajo, inyectando los tags resultantes en ese momento.
 * ⌨️ **Extracción Masiva (`Ctrl + Shift + T`):** Ejecuta el algoritmo en lote sobre **todas las imágenes que estén visibles actualmente en la tira de miniaturas** (respetando los switches de calidad o filtros de tags activos en ese microsegundo), indexando catálogos enteros en un solo parpadeo.
+---
+# 6. Tabla Maestra de Atajos de Teclado (Quick Reference)
+
+Para maximizar el flujo de trabajo en "piloto automático" y evitar la dependencia del ratón, utiliza esta guía rápida de comandos de teclado distribuidos por zonas de la interfaz:
+
+| Combinación | Ámbito / Foco | Acción Operativa |
+| :--- | :---: | :--- |
+| **`Tab`** | General | **Alternar Foco:** Salta entre los campos de edición de texto y el Canvas de trabajo para reactivar las teclas de acción. |
+| **`RePág`** *(Page Up)* | Navegación | Selecciona la **Imagen Anterior** del catálogo filtrado y la carga en el Canvas. |
+| **`AvPág`** *(Page Down)* | Navegación | Selecciona la **Imagen Siguiente** del catálogo filtrado y la carga en el Canvas. |
+| **`↑` `↓` `←` `→`** | Canvas | **Mover Crop:** Desplaza el marco de recorte píxel por píxel en el eje excedente activo (Vertical u Horizontal). |
+| **`Enter`** | Canvas | **Confirmar Crop:** Guarda la posición del cuadro en el JSON (ideal para fijar el encuadre centrado por defecto). |
+| **`Enter`** | Campos Texto | **Guardar Texto:** Consolida y guarda el filtro o los tags escritos dentro del archivo JSON. |
+| **`Ctrl + H`** | Canvas | **Flip Horizontal:** Invierte la imagen en el Canvas como simulación visual para el wallpaper. |
+| **`Ctrl + F`** | Canvas | **Favorita (Toggle):** Añade o remueve la marca de selección especial a la imagen activa. |
+| **`Esc`** | Canvas | **Ignorar (Toggle):** Marca la imagen para ser omitida por el rotador. Desatúrala en la tira de thumbs. |
+| **`Supr`** *(Delete)* | Canvas | **Pre-Borrado (Toggle):** Aplica el overlay rojo de advertencia y la deja en lista de espera para eliminación física. |
+| **`Ctrl + D`** | General | **Configuración:** Abre la ventana modal para gestionar los 3 niveles de jerarquías y palabras ignorables. |
+| **`Ctrl + N`** | Área Trabajo | **Tag to Name (Individual):** Reautiza el archivo físico activo ordenando sus tags por jerarquía semántica y limpiando redundancias. |
+| **`Ctrl + Shift + N`** | Área Trabajo | **Tag to Name (Masivo):** Renombra en lote todos los archivos visibles en la tira de miniaturas bajo las reglas jerárquicas. |
+| **`Ctrl + T`** | Área Trabajo | **Name to Tag (Individual):** Extrae de forma inversa los tags reconocidos a partir del nombre del archivo activo y los suma al JSON. |
+| **`Ctrl + Shift + T`** | Área Trabajo | **Name to Tag (Masivo):** Ejecuta la extracción semántica inversa en lote para todas las imágenes visibles en la tira. |
+
+---
+
+# 7. Arquitectura y Persistencia de Datos
+
+Detrás de la interfaz gráfica, el Master mantiene un motor de persistencia activo que opera en segundo plano y de manera independiente a las carpetas individuales que estés curando. Este "cerebro" centralizado garantiza la consistencia, velocidad y heredabilidad del sistema a lo largo del tiempo.
+
+### 7.1 El Diccionario Histórico de Tags
+Cada vez que indexas o capturas una nueva etiqueta en el editor, el sistema la almacena en un **Diccionario General Único**:
+* **Retención Absoluta:** Este registro **nunca elimina un tag**, incluso si borras la imagen original o cambias de directorio de trabajo. El Master asume que si un concepto fue útil en un catálogo, lo será en el futuro para mantener un estándar semántico.
+* **Alimentación Predictiva:** De esta base de datos global es de donde la *Ventana de Jerarquías* (`Ctrl + D`) extrae la información para su motor de autollenado predictivo a nivel de sistema.
+
+### 7.2 El Histórico de Rutas y Enlace con el Companion
+El Master guarda una bitácora persistente de cada directorio que ha sido procesado, estructurado y validado con su respectivo archivo `datos_carpeta.json`.
+* **Propósito en el Ecosistema:** Además de permitirte reabrir colecciones recientes con un solo clic, este mapeo de rutas es el puente de comunicación directo que utilizará el **Companion** (el rotador secundario automatizado) para saber con precisión milimétrica de dónde extraer los archivos clasificados como aptos, favoritos o recortados al momento de vestir tus monitores.

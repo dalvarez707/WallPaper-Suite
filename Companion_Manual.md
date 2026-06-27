@@ -94,3 +94,57 @@ Permite alterar artísticamente el clon temporal de la imagen antes de inyectarl
 <div align="center">
   <img width="757" height="86" alt="image" src="https://github.com/user-attachments/assets/dd162f5c-c750-4ba1-a331-b120a532d155" />
 </div>
+
+# 3. Gestión desde el System Tray y Menú Contextual
+
+El Companion está diseñado para operar en segundo plano sin interrumpir tu espacio de trabajo. Por ello, la interacción diaria se gestiona principalmente a través de la bandeja del sistema (*System Tray*).
+
+---
+
+### 3.1 Comportamiento del Botón Cerrar (`X`)
+
+Cuando intentas cerrar la ventana principal del Companion presionando la **`X`** superior derecha, el sistema desplegará un cuadro de confirmación con tres rutas de acción:
+* **SÍ:** Cierra el programa por completo y descarga el servicio de la memoria.
+* **NO:** Minimiza la ventana y envía el programa al *System Tray*, manteniendo activa la rotación de wallpapers en segundo plano.
+* **CANCELAR:** Mantiene la ventana principal abierta en la pantalla sin realizar ninguna acción.
+
+> 💡 **Retorno Rápido:**
+> Cuando el programa se encuentre oculto en el *System Tray*, basta con hacer **doble clic** sobre su icono para restaurar la ventana principal de inmediato.
+
+---
+
+### 3.2 Anatomía del Menú Contextual (Clic Derecho)
+
+Al hacer clic derecho sobre el icono del Companion en la bandeja del sistema, se desplegará un menú rápido dividido en 5 secciones operativas que te permiten controlar el estado de tu escritorio al vuelo:
+
+<div align="center">
+  <img width="303" height="277" alt="image" src="https://github.com/user-attachments/assets/5fb9c04b-ca06-450b-85be-971d09efc841" />
+</div>
+
+#### 1. Identificación de Archivo
+* **Nombre de la Imagen Actual:** Muestra en texto plano el nombre del archivo que está vistiendo tu escritorio en ese microsegundo. Funciona de manera meramente informativa.
+
+#### 2. Conmutadores de Estado (*Toggles*)
+Esta sección no lleva título visible, sino que muestra directamente tres opciones con el estado actual de la imagen en el archivo JSON. Al hacer clic sobre cualquiera de ellas, se aplicará un *toggle* inmediato sobre el archivo `datos_carpeta.json` correspondiente:
+* **Favorita** (Activar / Desactivar)
+* **Ignorar** (Activar / Desactivar)
+* **Eliminar** (Activar / Desactivar)
+
+#### 3. Acceso Directo al Sistema de Archivos
+* **Abrir imagen en carpeta:** Invoca al Explorador de Windows y abre de forma directa la carpeta contenedora de la imagen actual, dejando el archivo **preseleccionado (resaltado)** para que lo ubiques en un segundo.
+
+#### 4. Módulo de Navegación Condicional
+El comportamiento de esta sección se adapta de manera inteligente al modo de programación seleccionado en la interfaz principal (secuencial o aleatorio):
+
+* **Si el Modo Aleatorio está INACTIVO (Navegación Secuencial):**
+  * Se habilitan los submenús **Imagen Anterior** e **Imagen Siguiente**. 
+  * La navegación sigue un orden estricto basado en la fecha de adición del archivo al JSON (`date`), permitiéndote avanzar o retroceder de manera fluida entre el catálogo que cumplió con tus filtros.
+  * El botón *Cambiar imagen* se atenúa (se deshabilita).
+* **Si el Modo Aleatorio está ACTIVO:**
+  * Se habilita el botón **Cambiar imagen**, el cual fuerza al motor a calcular y proyectar una nueva composición al azar en tu escritorio.
+  * Dado que el software está optimizado para ser ultra-ligero y no almacena un historial de lo que ya mostró, **no permite retroceder**.
+  * Los submenús *Imagen Anterior* e *Imagen Siguiente* se atenuarán y quedarán inoperativos.
+
+#### 5. Enlaces del Ecosistema y Salida
+* **Abrir Master:** Lanza de forma automatizada la interfaz del *Master*. El sistema cuenta con una pasarela de seguridad que **comprueba que no esté abierto previamente** para evitar redundancias de procesos en memoria. Al ejecutarse, el Master se abrirá cargando por defecto la última carpeta en la que estuviste trabajando.
+* **SALIR:** El comando definitivo de apagado. Volverá a lanzar el cuadro de confirmación para asegurar que realmente deseas terminar el servicio del Companion.
